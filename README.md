@@ -1,5 +1,5 @@
-# Chess Opening Trainer ♟️
+# GChess ♟️
 
-A React + Vite app to practice chess openings.
+A React + Vite app to learn chess openings, tactics and more.
 
 Please visit to check app : 
