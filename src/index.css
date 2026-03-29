@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "DM Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --bg: #0e0e0f;
+  --surface: #161618;
+  --surface2: #1e1e21;
+  --border: #2a2a2f;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --cream: #f5efe0;
+  --text: #e8e2d5;
+  --text-muted: #7a7570;
+  --green: #4caf7d;
+  --red: #e05252;
+  --blue: #5b8dee;
+  --light-sq: #f0d9b5;
+  --dark-sq: #b58863;
+  --highlight: rgba(201,168,76,0.35);
+  --hint-sq: rgba(91,141,238,0.4);
+}
+
+@layer base {
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Chess Board Styles */
+#chess-board {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.square {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: filter 0.1s;
+  user-select: none;
+  -webkit-user-select: none;
+  caret-color: transparent;
+}
+
+.square.light { background: var(--light-sq); }
+.square.dark { background: var(--dark-sq); }
+.square.selected { background: rgba(201,168,76,0.6) !important; }
+.square.valid-move::after {
+  content: '';
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.2);
+  pointer-events: none;
+  z-index: 2;
+}
+.square.valid-capture::after {
+  content: '';
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  border: 4px solid rgba(0,0,0,0.25);
+  pointer-events: none;
+  z-index: 2;
+}
+.square.last-move { background: rgba(201,168,76,0.3) !important; }
+.square.hint-sq { background: rgba(91,141,238,0.35) !important; }
+
+.piece {
+  width: 92%;
+  height: 92%;
+  position: relative;
+  z-index: 3;
+  user-select: none;
+  cursor: grab;
+  transition: transform 0.12s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.piece:active { cursor: grabbing; transform: scale(1.15); }
+.piece img {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+}
+
+.feedback-mark {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  font-size: 0.7rem;
+  z-index: 10;
+  pointer-events: none;
+  line-height: 1;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+.feedback-mark.correct { background: var(--green); color: white; }
+.feedback-mark.wrong { background: var(--red); color: white; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
