@@ -162,7 +162,7 @@ const Landing = ({ onSelectOpening }: { onSelectOpening: (o: Opening) => void })
   return (
     <div id="landing" className="flex flex-col min-h-screen">
       <nav className="flex items-center justify-between px-12 py-6 border-b border-[#2a2a2f]">
-        <div className="font-serif text-2xl text-[#c9a84c] tracking-wider">G<span className="text-[#f5efe0]">Chess</span></div>
+        <div className="font-serif text-2xl text-[#c9a84c] tracking-wider">G<span className="text-[#f5efe0]">Chess</span>♟️</div>
         <div className="flex gap-8">
           <a href="#" className="text-[#7a7570] hover:text-[#c9a84c] transition-colors text-sm font-medium">Openings</a>
           <a href="#" className="text-[#7a7570] hover:text-[#c9a84c] transition-colors text-sm font-medium">Tactics</a>
